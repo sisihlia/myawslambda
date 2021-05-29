@@ -122,106 +122,6 @@ Configuring SAM deploy
         SAM configuration file [samconfig.toml]: 
         SAM configuration environment [default]: 
 
-        Looking for resources needed for deployment: Not found.
-        Creating the required resources...
-        Successfully created!
-
-                Managed S3 bucket: aws-sam-cli-managed-default-samclisourcebucket-hyn8fotjq3l6
-                A different default S3 bucket can be set in samconfig.toml
-
-        Saved arguments to config file
-        Running 'sam deploy' for future deployments will use the parameters saved above.
-        The above parameters can be changed by modifying samconfig.toml
-        Learn more about samconfig.toml syntax at 
-        https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-config.html
-
-The push refers to repository [258553770771.dkr.ecr.us-east-2.amazonaws.com/myecr]
-d0658a1ccbf4: Pushed 
-8cc473776aa9: Pushed 
-66b7350aa423: Pushed 
-61f3cc4518fd: Pushed 
-d6fa53d6caa6: Pushed 
-8de44aa80f89: Pushed 
-a9165ff9bec4: Pushed 
-06019287a34a: Pushed 
-helloworldfunction-3faf7e42483f-python3.8-v1: digest: sha256:bc841c82ae7a47e5e4b6c22a234d3e4467c8fd435a531a19a7b152e9d596246e size: 1999
-
-
-        Deploying with following values
-        ===============================
-        Stack name                   : MyHelloWorldLambdaStack
-        Region                       : us-east-2
-        Confirm changeset            : True
-        Deployment image repository  : 
-                                       {
-                                           "HelloWorldFunction": "258553770771.dkr.ecr.us-east-2.amazonaws.com/myecr"
-                                       }
-        Deployment s3 bucket         : aws-sam-cli-managed-default-samclisourcebucket-hyn8fotjq3l6
-        Capabilities                 : ["CAPABILITY_IAM"]
-        Parameter overrides          : {}
-        Signing Profiles             : {}
-
-Initiating deployment
-=====================
-HelloWorldFunction may not have authorization defined.
-Uploading to MyHelloWorldLambdaStack/1ada58cd3d43d06885b705600ac4b5e4.template  1167 / 1167  (100.00%)
-
-Waiting for changeset to be created..
-
-CloudFormation stack changeset
--------------------------------------------------------------------------------------------------------------------------------------------------
-Operation                            LogicalResourceId                    ResourceType                         Replacement                        
--------------------------------------------------------------------------------------------------------------------------------------------------
-+ Add                                HelloWorldFunctionHelloWorldPermis   AWS::Lambda::Permission              N/A                                
-                                     sionProd                                                                                                     
-+ Add                                HelloWorldFunctionRole               AWS::IAM::Role                       N/A                                
-+ Add                                HelloWorldFunction                   AWS::Lambda::Function                N/A                                
-+ Add                                ServerlessRestApiDeployment47fc2d5   AWS::ApiGateway::Deployment          N/A                                
-                                     f9d                                                                                                          
-+ Add                                ServerlessRestApiProdStage           AWS::ApiGateway::Stage               N/A                                
-+ Add                                ServerlessRestApi                    AWS::ApiGateway::RestApi             N/A                                
--------------------------------------------------------------------------------------------------------------------------------------------------
-
-Changeset created successfully. arn:aws:cloudformation:us-east-2:258553770771:changeSet/samcli-deploy1622284035/378f5358-30ad-4802-a1d8-fc1d1faccac3
-
-
-Previewing CloudFormation changeset before deployment
-======================================================
-Deploy this changeset? [y/N]: y
-
-2021-05-29 10:27:25 - Waiting for stack create/update to complete
-
-CloudFormation events from changeset
--------------------------------------------------------------------------------------------------------------------------------------------------
-ResourceStatus                       ResourceType                         LogicalResourceId                    ResourceStatusReason               
--------------------------------------------------------------------------------------------------------------------------------------------------
-CREATE_IN_PROGRESS                   AWS::IAM::Role                       HelloWorldFunctionRole               Resource creation Initiated        
-CREATE_IN_PROGRESS                   AWS::IAM::Role                       HelloWorldFunctionRole               -                                  
-CREATE_COMPLETE                      AWS::IAM::Role                       HelloWorldFunctionRole               -                                  
-CREATE_IN_PROGRESS                   AWS::Lambda::Function                HelloWorldFunction                   -                                  
-CREATE_IN_PROGRESS                   AWS::Lambda::Function                HelloWorldFunction                   Resource creation Initiated        
-CREATE_COMPLETE                      AWS::Lambda::Function                HelloWorldFunction                   -                                  
-CREATE_IN_PROGRESS                   AWS::ApiGateway::RestApi             ServerlessRestApi                    -                                  
-CREATE_IN_PROGRESS                   AWS::ApiGateway::RestApi             ServerlessRestApi                    Resource creation Initiated        
-CREATE_COMPLETE                      AWS::ApiGateway::RestApi             ServerlessRestApi                    -                                  
-CREATE_IN_PROGRESS                   AWS::Lambda::Permission              HelloWorldFunctionHelloWorldPermis   -                                  
-                                                                          sionProd                                                                
-CREATE_IN_PROGRESS                   AWS::Lambda::Permission              HelloWorldFunctionHelloWorldPermis   Resource creation Initiated        
-                                                                          sionProd                                                                
-CREATE_IN_PROGRESS                   AWS::ApiGateway::Deployment          ServerlessRestApiDeployment47fc2d5   -                                  
-                                                                          f9d                                                                     
-CREATE_COMPLETE                      AWS::ApiGateway::Deployment          ServerlessRestApiDeployment47fc2d5   -                                  
-                                                                          f9d                                                                     
-CREATE_IN_PROGRESS                   AWS::ApiGateway::Deployment          ServerlessRestApiDeployment47fc2d5   Resource creation Initiated        
-                                                                          f9d                                                                     
-CREATE_IN_PROGRESS                   AWS::ApiGateway::Stage               ServerlessRestApiProdStage           -                                  
-CREATE_IN_PROGRESS                   AWS::ApiGateway::Stage               ServerlessRestApiProdStage           Resource creation Initiated        
-CREATE_COMPLETE                      AWS::ApiGateway::Stage               ServerlessRestApiProdStage           -                                  
-CREATE_COMPLETE                      AWS::Lambda::Permission              HelloWorldFunctionHelloWorldPermis   -                                  
-                                                                          sionProd                                                                
-CREATE_COMPLETE                      AWS::CloudFormation::Stack           MyHelloWorldLambdaStack              -                                  
--------------------------------------------------------------------------------------------------------------------------------------------------
-
 CloudFormation outputs from deployed stack
 -------------------------------------------------------------------------------------------------------------------------------------------------
 Outputs                                                                                                                                         
@@ -241,7 +141,16 @@ Value               arn:aws:lambda:us-east-2:258553770771:function:MyHelloWorldL
 
 Successfully created/updated stack - MyHelloWorldLambdaStack in us-east-2  #check CFN and Lambda, they are well created
 
-##Testing
+## testing
+
+1. AWS Cloud9 terminal
+ubuntu:~/environment/myawslambda (main) $ curl https://jmnsdz2gnc.execute-api.us-east-2.amazonaws.com/Prod/hello/ 
+{"message": "hello world"}
+
+2. AWS console
+![image](https://user-images.githubusercontent.com/8087964/120068925-71f40b80-c083-11eb-8fb2-07d1a1eb0fb1.png)
+
+4. AWS Lambda Function in AWS CLoud9
 
 
 
