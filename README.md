@@ -149,8 +149,24 @@ ubuntu:~/environment/myawslambda (main) $ curl https://jmnsdz2gnc.execute-api.us
 
 2. AWS console
 ![image](https://user-images.githubusercontent.com/8087964/120068925-71f40b80-c083-11eb-8fb2-07d1a1eb0fb1.png)
+![image](https://user-images.githubusercontent.com/8087964/120068974-a1a31380-c083-11eb-8f95-42ded7743761.png)
+
 
 4. AWS Lambda Function in AWS CLoud9
+![image](https://user-images.githubusercontent.com/8087964/120068997-cdbe9480-c083-11eb-84b6-76e7077a7e69.png)
+
+Loading response...
+Invocation result for arn:aws:lambda:us-east-2:258553770771:function:MyHelloWorldLambdaStack-HelloWorldFunction-5YBAaoENERjN
+Logs:
+START RequestId: daa4e6d9-e116-43de-9bd2-2d7c2b1ec141 Version: $LATEST
+END RequestId: daa4e6d9-e116-43de-9bd2-2d7c2b1ec141
+REPORT RequestId: daa4e6d9-e116-43de-9bd2-2d7c2b1ec141	Duration: 0.88 ms	Billed Duration: 1 ms	Memory Size: 128 MB	Max Memory Used: 50 MB	
+
+
+Payload:
+{"statusCode": 200, "body": "{\"message\": \"hello world\"}"}
+
+
 
 
 
