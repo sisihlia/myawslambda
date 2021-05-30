@@ -1,27 +1,32 @@
 # myawslambda
 
-
-## Start lambda
-ubuntu:~/environment/myawslambda (main) $ sam init
-Parameters:
-Which template source would you like to use?
+Check specs
+======================
+        ubuntu:~/environment/myawslambda (main) $ sam init
+        
+        Parameters:
         Template Source: 1 - AWS Quick Start Templates
         Package type: 2 -  Image (artifact is an image uploaded to an ECR image repository)
         Base image:  4 - amazon/python3.8-base
         Project name [sam-app]: MyHelloWorldLambda                                                      
 
 
-ubuntu:~/environment/myawslambda (main) $ cd MyHelloWorldLambda/
-ubuntu:~/environment/myawslambda/MyHelloWorldLambda (main) $ ls
-README.md  __init__.py  events  hello_world  template.yaml  tests
-ubuntu:~/environment/myawslambda/MyHelloWorldLambda (main) $ sam build
 
-ubuntu:~/environment/myawslambda/MyHelloWorldLambda (main) $ sam deploy --guided
+Build Image
+======================
+
+        ubuntu:~/environment/myawslambda/MyHelloWorldLambda (main) $ sam build
+
+
+Create and deploy lambda
+======================
+
+        ubuntu:~/environment/myawslambda/MyHelloWorldLambda (main) $ sam deploy --guided
+        
 
 Configuring SAM deploy
 ======================
 
-        Looking for config file [samconfig.toml] :  Not found
 
         Setting default arguments for 'sam deploy'
         =========================================
